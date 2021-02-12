@@ -4,11 +4,13 @@ spring:
     password: root
     url: jdbc:mysql://localhost:3306/spring_batch_test?serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
+  batch:
+    initialize-schema: always
 
 server:
   port: 8080
 
 mybatis:
   mapper-locations: classpath:mapping/*Mapper.xml
-  type-aliases-package: com.koiwaLearning.group.domain
+  type-aliases-package: com.koiwaLearning.api.domain
 

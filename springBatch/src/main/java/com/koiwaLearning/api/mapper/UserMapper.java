@@ -1,6 +1,6 @@
-package com.koiwaLearning.group.mapper;
+package com.koiwaLearning.api.mapper;
 
-import com.koiwaLearning.group.domain.User;
+import com.koiwaLearning.api.domain.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
