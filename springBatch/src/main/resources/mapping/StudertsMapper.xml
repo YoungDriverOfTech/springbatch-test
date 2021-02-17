@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.koiwaLearning.api.mapper.StudentsMapper">
+
+    <resultMap id="BaseResultMap" type="com.koiwaLearning.api.domain.Students">
+        <result column="sno" jdbcType="VARCHAR" property="sno" />
+        <result column="sname" jdbcType="VARCHAR" property="sname" />
+        <result column="ssex" jdbcType="VARCHAR" property="ssex" />
+        <result column="sbirthday" jdbcType="VARCHAR" property="sbirthday" />
+        <result column="sclass" jdbcType="VARCHAR" property="sclass" />
+    </resultMap>
+
+    <select id="findStudents" resultMap="BaseResultMap">
+        select * from students
+    </select>
+
+
+
+</mapper>
