@@ -1,5 +1,7 @@
 package com.koiwaLearning.api.domain;
 
+import java.sql.Timestamp;
+
 public class Students {
 
     private String sno;
@@ -8,7 +10,7 @@ public class Students {
 
     private String ssex;
 
-    private String sbirthday;
+    private Timestamp sbirthday;
 
     private String sclass;
 
@@ -47,11 +49,11 @@ public class Students {
         this.ssex = ssex;
     }
 
-    public String getSbirthday() {
+    public Timestamp getSbirthday() {
         return sbirthday;
     }
 
-    public void setSbirthday(String sbirthday) {
+    public void setSbirthday(Timestamp sbirthday) {
         this.sbirthday = sbirthday;
     }
 

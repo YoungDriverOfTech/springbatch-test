@@ -11,8 +11,27 @@
     </resultMap>
 
     <select id="findStudents" resultMap="BaseResultMap">
-        select * from students
+        SELECT * FROM students;
     </select>
+
+    <insert id="insertStudents" parameterType="com.koiwaLearning.api.domain.Students">
+        INSERT INTO students (
+          sno,sname,ssex,sbirthday,sclass)
+        VALUES (
+          #{sno},#{sname},#{ssex},#{sbirthday},#{sclass});
+    </insert>
+
+    <update id="updateStudents" parameterType="com.koiwaLearning.api.domain.Students">
+        UPDATE students
+        SET SNAME = #{sname},
+          SCLASS = #{sclass}
+        WHERE   sno = #{sno};
+    </update>
+
+    <delete id="deleteStudents" parameterType="String">
+        DELETE FROM students
+        WHERE sno = #{sno};
+    </delete>
 
 
 
