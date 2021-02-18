@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.koiwaLearning.api.mapper.ScoreMapper">
+
+    <resultMap id="AllScoresMap" type="com.koiwaLearning.api.domain.Score">
+        <result column="sno" jdbcType="INTEGER" property="studentNumber" />
+        <result column="cno" jdbcType="VARCHAR" property="courseNumber" />
+        <result column="degree" jdbcType="INTEGER" property="degree" />
+    </resultMap>
+
+    <select id="findAllScores" resultMap="AllScoresMap">
+        select sno, cno,degree from scores
+    </select>
+
+    <insert id="addScore" parameterType="com.koiwaLearning.api.domain.Score">
+        INSERT INTO scores(
+        sno,cno,degree
+        )VALUES(
+        #{studentNumber},#{courseNumber},#{degree}
+        );
+    </insert>
+
+    <delete id="deleteScore" parameterType="com.koiwaLearning.api.domain.Score">
+        DELETE FROM scores
+        WHERE sno = #{studentNumber}
+        AND cno = #{courseNumber}
+    </delete>
+
+    <update id="updateScore" parameterType="com.koiwaLearning.api.domain.Score">
+        UPDATE scores
+        SET degree = #{degree}
+        WHERE sno = #{studentNumber}
+        AND cno = #{courseNumber};
+    </update>
+</mapper>
