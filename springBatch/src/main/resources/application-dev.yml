@@ -1,7 +1,7 @@
 spring:
   datasource:
-    username: root
-    password: root
+    username: user001
+    password: user001
     url: jdbc:mysql://localhost:3306/spring_batch_test?serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
   batch:
