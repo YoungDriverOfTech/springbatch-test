@@ -63,6 +63,6 @@ public class ListenerDemo {
 
     @Bean
     public ItemReader<String> read() {
-        return new ListItemReader<>(Arrays.asList("aaa","bbb","ccc","ddd","eee","fff"));
+        return new ListItemReader<>(Arrays.asList("aaa","bbb","ccc","ddd","eee","fff","ggg","hhh","iii"));
     }
 }

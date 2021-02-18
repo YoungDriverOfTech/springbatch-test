@@ -9,10 +9,10 @@
 4、查询所有任课教师的Tname和Depart.
 5 查询所有未讲课的教师的Tname和Depart.
 6、查询至少有2名男生的班号。
-7、查询Student表中不姓“王”的同学记录。
-8、查询Student表中每个学生的姓名和年龄。
-9、查询Student表中最大和最小的Sbirthday日期值。
-10、以班号和年龄从大到小的顺序查询Student表中的全部记录。
+7、查询actor表中不姓“王”的同学记录。
+8、查询actor表中每个学生的姓名和年龄。
+9、查询actor表中最大和最小的Sbirthday日期值。
+10、以班号和年龄从大到小的顺序查询actor表中的全部记录。
 11、查询“男”教师及其所上的课程。
 12、查询最高分同学的Sno、Cno和Degree列。
 13、查询和“李军”同性别的所有同学的Sname.
@@ -22,7 +22,7 @@
 对应的接口，能把正确的结果查询出来就行)
 
 
-CREATE TABLE students(
+CREATE TABLE actors(
     sno VARCHAR (3) NOT NULL
     , sname VARCHAR (4) NOT NULL
     , ssex VARCHAR (2) NOT NULL
@@ -51,12 +51,12 @@ CREATE TABLE teachers(
     , depart VARCHAR (10) NOT NULL
 );
 
-INSERT INTO students (SNO,SNAME,SSEX,SBIRTHDAY,CLASS) VALUES (108 ,'曾华' ,'男' ,'1977-09-01',95033);
-INSERT INTO students (SNO,SNAME,SSEX,SBIRTHDAY,CLASS) VALUES (105 ,'匡明' ,'男' ,'1975-10-02',95031);
-INSERT INTO students (SNO,SNAME,SSEX,SBIRTHDAY,CLASS) VALUES (107 ,'王丽' ,'女' ,'1976-01-23',95033);
-INSERT INTO students (SNO,SNAME,SSEX,SBIRTHDAY,CLASS) VALUES (101 ,'李军' ,'男' ,'1976-02-20',95033);
-INSERT INTO students (SNO,SNAME,SSEX,SBIRTHDAY,CLASS) VALUES (109 ,'王芳' ,'女' ,'1975-02-10',95031);
-INSERT INTO students (SNO,SNAME,SSEX,SBIRTHDAY,CLASS) VALUES (103 ,'陆君' ,'男' ,'1974-06-03',95031);
+INSERT INTO actors (SNO,SNAME,SSEX,SBIRTHDAY,CLASS) VALUES (108 ,'曾华' ,'男' ,'1977-09-01',95033);
+INSERT INTO actors (SNO,SNAME,SSEX,SBIRTHDAY,CLASS) VALUES (105 ,'匡明' ,'男' ,'1975-10-02',95031);
+INSERT INTO actors (SNO,SNAME,SSEX,SBIRTHDAY,CLASS) VALUES (107 ,'王丽' ,'女' ,'1976-01-23',95033);
+INSERT INTO actors (SNO,SNAME,SSEX,SBIRTHDAY,CLASS) VALUES (101 ,'李军' ,'男' ,'1976-02-20',95033);
+INSERT INTO actors (SNO,SNAME,SSEX,SBIRTHDAY,CLASS) VALUES (109 ,'王芳' ,'女' ,'1975-02-10',95031);
+INSERT INTO actors (SNO,SNAME,SSEX,SBIRTHDAY,CLASS) VALUES (103 ,'陆君' ,'男' ,'1974-06-03',95031);
 INSERT INTO courses(CNO,CNAME,TNO)VALUES ('3-105' ,'计算机导论',825);
 INSERT INTO courses(CNO,CNAME,TNO)VALUES ('3-245' ,'操作系统' ,804);
 INSERT INTO courses(CNO,CNAME,TNO)VALUES ('6-166' ,'数据电路' ,856);

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.koiwaLearning.api.mapper.TeacherMapper">
+
+    <resultMap id="AllTeacherMap" type="com.koiwaLearning.api.domain.Teacher">
+        <result column="tno" jdbcType="INTEGER" property="id" />
+        <result column="tname" jdbcType="VARCHAR" property="name" />
+        <result column="tsex" jdbcType="VARCHAR" property="gender" />
+        <result column="tbirthday" jdbcType="TIMESTAMP" property="birthday" />
+        <result column="prof" jdbcType="VARCHAR" property="prof" />
+        <result column="depart" jdbcType="VARCHAR" property="depart" />
+    </resultMap>
+
+    <select id="findAllTeachers" resultMap="AllTeacherMap">
+        select tno,tname,tsex,tbirthday as birthday,prof,depart from teachers;
+    </select>
+
+    <insert id="addTeacher" parameterType="com.koiwaLearning.api.domain.Teacher">
+        INSERT INTO teachers (
+        tno,tname,tsex,tbirthday,prof,depart
+        ) VALUES(
+        #{id},#{name},#{gender},#{birthday},#{prof},#{depart}
+        );
+    </insert>
+
+    <delete id="deleteTeacher" parameterType="com.koiwaLearning.api.domain.Teacher">
+        DELETE FROM teachers
+        WHERE tno = #{id}
+    </delete>
+
+    <update id="updateTeacher" parameterType="com.koiwaLearning.api.domain.Teacher">
+        UPDATE teachers
+        SET tname = #{name},
+        tsex = #{gender},
+        tbirthday = #{birthday},
+        prof = #{prof},
+        depart = #{depart}
+        WHERE tno = #{id}
+    </update>
+</mapper>

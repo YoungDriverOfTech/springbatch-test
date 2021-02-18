@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.koiwaLearning.api.mapper.CourseMapper">
+
+    <resultMap id="AllCourseMap" type="com.koiwaLearning.api.domain.Course">
+        <result column="cno" jdbcType="VARCHAR" property="courseNumber" />
+        <result column="cname" jdbcType="VARCHAR" property="coursesName" />
+        <result column="tno" jdbcType="VARCHAR" property="teacherNumber" />
+    </resultMap>
+
+    <select id="findAllCourses" resultMap="AllCourseMap">
+        select cno,cname,tno from courses;
+    </select>
+
+    <insert id="addCourse" parameterType="com.koiwaLearning.api.domain.Course">
+        INSERT INTO courses (
+        cno,cname,tno
+        ) VALUES(
+        #{courseNumber},#{coursesName},#{teacherNumber}
+        );
+    </insert>
+
+    <delete id="deleteCourse" parameterType="com.koiwaLearning.api.domain.Course">
+        DELETE FROM courses
+        WHERE cno = #{courseNumber}
+    </delete>
+
+    <update id="updateCourse" parameterType="com.koiwaLearning.api.domain.Course">
+        UPDATE courses
+        SET cname = #{coursesName},
+        tno = #{teacherNumber}
+        WHERE cno = #{courseNumber}
+    </update>
+</mapper>
