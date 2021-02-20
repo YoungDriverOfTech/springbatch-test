@@ -1,12 +1,11 @@
 package com.koiwaLearning;
 
 
+import com.koiwaLearning.group.User;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StreamTest {
@@ -32,11 +31,11 @@ public class StreamTest {
 
 
     List<User> users = Arrays.asList(
-            new User("gc1", 24, 7500, Status.BUSY),
-            new User("gc2", 25, 13000, Status.FREE),
-            new User("gc3", 26, 20000, Status.VOCATION),
-            new User("gc4", 23, 2000, Status.BUSY),
-            new User("gc5", 22, 0, Status.FREE));
+            new User("gc1", 24, 7500, "busy"),
+            new User("gc2", 25, 13000, "free"),
+            new User("gc3", 26, 20000, "vocation"),
+            new User("gc4", 23, 2000,"busy"),
+            new User("gc5", 22, 0, "free"));
     /*
      * 中间操作：(1.返回结果依然是流  2.中间操作是延迟的，遇到终结操作才会触发执行  3.中间操作是流水线形式的)
      *     筛选与切片
@@ -101,28 +100,7 @@ public class StreamTest {
 
     }
 
-    @Test
-    public void testMap() {
-        List<String> list = Arrays.asList("aa","bb","cc");
-        //中间操作map传递的是函数式接口Function，其作用是进行数据转换。
-        //这里str -> str.toUpperCase()即为Function接口中apply方法的实现，所以其作用就是转为大写。
-        list.stream().map(str -> str.toUpperCase()).forEach(System.out::println);
-        //这个同上，是lambda的简写
-        list.stream().map(String::toUpperCase).forEach(System.out::println);
 
-        //使用Function接口的功能转换，提取User的用户名，执行完中间操作map后，相当于生成了一个List<String> userNames.(中间操作有延迟性，所以这里不是准确描述)
-        users.stream().map(User::getName).forEach(System.out::println);
-        users.stream().map(u -> u.getName()).forEach(System.out::println);
-
-        System.out.println("----------------------map,类似于list.add(list2),保留list2的数据结构");
-        Stream<Stream<Character>> stream = list.stream().map(TestStream::filterCharacter);
-        stream.forEach(sm -> {
-            sm.forEach(System.out::println);
-        });
-        System.out.println("----------------------flatmap, 类似于list.addall()，两个list合并为一个");
-        Stream<Character> stream2 = list.stream().flatMap(TestStream::filterCharacter);
-        stream2.forEach(System.out::println);
-    }
 
     public static Stream<Character> filterCharacter(String str) {
         List<Character> list = new ArrayList<Character>();
@@ -160,19 +138,19 @@ public class StreamTest {
      */
     @Test
     public void testMatch() {
-        boolean b1 = users.stream().allMatch(u -> u.getStatus().equals(Status.BUSY));
+        boolean b1 = users.stream().allMatch(u -> u.getStatus().equals("busy"));
         System.out.println("all busy:"+b1);
 
-        boolean b2 = users.stream().anyMatch(u -> u.getStatus().equals(Status.BUSY));
+        boolean b2 = users.stream().anyMatch(u -> u.getStatus().equals("busy"));
         System.out.println("any busy:"+b2);
 
-        boolean b3 = users.stream().noneMatch(u -> u.getStatus().equals(Status.BUSY));
+        boolean b3 = users.stream().noneMatch(u -> u.getStatus().equals("busy"));
         System.out.println("none busy:"+b3);
 
         Optional<User> user1 = users.stream().findFirst();
         System.out.println("findFirst:"+user1.get());
 
-        Optional<User> findAny = users.stream().filter(u -> u.getStatus().equals(Status.FREE)).findAny();
+        Optional<User> findAny = users.stream().filter(u -> u.getStatus().equals("free")).findAny();
         System.out.println("findAny:"+findAny.get());
 
         long count = users.stream().count();
@@ -225,10 +203,10 @@ public class StreamTest {
         Double avgAge = users.stream().collect(Collectors.averagingInt(User::getAge));
 
         //按条件分组
-        Map<Status, List<User>> map = users.stream().collect(Collectors.groupingBy(User::getStatus));
+        Map<String, List<User>> map = users.stream().collect(Collectors.groupingBy(User::getStatus));
         System.out.println("collectors分组功能， map:"+map);
 
-        Map<Status, Map<String, List<User>>> collect = users.stream().collect(Collectors.groupingBy(
+        Map<String, Map<String, List<User>>> collect = users.stream().collect(Collectors.groupingBy(
                 User::getStatus, Collectors.groupingBy(u -> {
                     if(((User)u).getAge() <= 24) {
                         return "happy";
