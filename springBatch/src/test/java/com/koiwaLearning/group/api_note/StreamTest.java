@@ -1,4 +1,4 @@
-package com.koiwaLearning;
+package com.koiwaLearning.group.api_note;
 
 
 import com.koiwaLearning.group.User;
@@ -9,6 +9,24 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StreamTest {
+
+    @Test
+    public void allTest() {
+        //创建Stream
+        test();
+        //内部迭代：迭代操作部由Stream API完成
+        testMid();
+        //filter内部メソッド
+        testMid2();
+        //排序
+        testSort();
+        //查找与匹配
+        testMatch();
+        //进行反复计算
+        testReduce();
+        //收集-数据转换
+        testCollect();
+    }
     //创建Stream
     @Test
     public void test() {
@@ -100,8 +118,6 @@ public class StreamTest {
 
     }
 
-
-
     public static Stream<Character> filterCharacter(String str) {
         List<Character> list = new ArrayList<Character>();
 
@@ -121,7 +137,12 @@ public class StreamTest {
         //sorted的入参是Comparator接口，所以(u1,u2) -> {return u1.getAge() - u2.getAge();}成了Comparator接口的匿名实现
         users.stream().sorted((u1,u2) -> {
             return u1.getAge() - u2.getAge();
-        }).forEach(System.out::println);;
+        }).forEach(System.out::println);
+
+        //sorted的入参是Comparator接口，所以(u1,u2) -> {return u1.getAge() - u2.getAge();}成了Comparator接口的匿名实现
+        users.stream().sorted(
+                Comparator.comparingInt(User::getAge))
+                .forEach(System.out::println);
     }
 
     /*
