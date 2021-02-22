@@ -27,7 +27,7 @@
             CLASS = #{sclass}
         WHERE sno = #{sno};
     </update>
-    <delete id="deleteStudents" parameterType="com.koiwaLearning.api.domain.Students">
+    <delete id="deleteStudents" parameterType = "String">
         DELETE  FROM students
         WHERE sno = #{sno};
     </delete>

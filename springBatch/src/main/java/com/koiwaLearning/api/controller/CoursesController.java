@@ -26,11 +26,27 @@ public class CoursesController {
     //追加
     @RequestMapping(value = {"/insert"},method = RequestMethod.GET)
     public int  insertCourses(){
+
         Courses courses = new Courses();
-        courses.setCno("001");
+        courses.setCno("3-001");
         courses.setCname("BBB");
         courses.setTno("A001");
         return coursesService.insertCourses(courses);
     }
+    @RequestMapping(value = {"/update"},method = RequestMethod.GET)
+    public int updateCourses(){
+        Courses courses = new Courses();
+        courses.setCno("3-001");
+        courses.setCname("CCCC");
+        courses.setTno("A1234567");
+        return coursesService.updateCourses(courses);
+    }
 
+    @RequestMapping(value = {"/delete"},method = RequestMethod.GET)
+    public int deleteCourses(){
+//        Courses courses = new Courses();
+//        courses.setTno("123");
+        String cno = "3-001";
+        return coursesService.deleteCourses(cno);
+    }
 }

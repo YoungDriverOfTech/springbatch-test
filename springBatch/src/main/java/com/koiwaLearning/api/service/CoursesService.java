@@ -23,6 +23,15 @@ public class CoursesService {
     public int insertCourses(Courses courses){
         return coursesMapper.insertCourses(courses);
     }
+    //更新
+    public int updateCourses(Courses courses){
+        return coursesMapper.updateCourses(courses);
+    }
+    //删除
+    public int deleteCourses(String string){
+        //return coursesMapper.deleteCourses(courses);
+        return coursesMapper.deleteCourses(string);
+    }
 
 
 }

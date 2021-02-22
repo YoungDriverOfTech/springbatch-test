@@ -13,15 +13,27 @@
 
     </select>
 
-    //追加
-    <select id="insertCourses" parameterType="com.koiwaLearning.api.domain.Courses">
+    <!--追加-->
+    <insert id="insertCourses" parameterType="com.koiwaLearning.api.domain.Courses">
         INSERT INTO courses(
         cno,cname,tno )
-        VALUE(
+        VALUES(
         #{cno},#{cname},#{tno}
         );
-
-    </select>
+    </insert>
+    <!--更新-->
+    <update id="updateCourses" parameterType="com.koiwaLearning.api.domain.Courses">
+        UPDATE courses
+        SET CNAME = #{cname},
+            TNO   = #{tno}
+        WHERE CNO = #{cno};
+    </update>
+    <!--删除-->
+ <!--   <delete id="deleteCourses" parameterType="com.koiwaLearning.api.domain.Courses">-->
+    <delete id="deleteCourses" parameterType="String">
+        DELETE FROM courses
+        WHERE CNO = #{cno};
+    </delete>
 
 
 </mapper>
