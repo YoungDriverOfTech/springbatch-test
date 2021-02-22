@@ -19,7 +19,9 @@ public class StudentsController {
 
     //检索
     @RequestMapping(value = {"/select"},method = RequestMethod.GET)
-    public List<Students> selectStudents(){ return studentsService.findStudents();}
+    public List<Students> selectStudents(){
+        return studentsService.findStudents();
+    }
 
     //追加
     @RequestMapping(value = {"/insert"}, method = RequestMethod.GET)

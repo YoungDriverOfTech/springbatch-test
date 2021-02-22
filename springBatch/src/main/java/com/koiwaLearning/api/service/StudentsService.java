@@ -14,10 +14,13 @@ public class StudentsService {
     private StudentsMapper studentsMapper;
 
     //检索
-    public List<Students> findStudents(){ return studentsMapper.findStudents();}
+    public List<Students> findStudents(){
+        return studentsMapper.findStudents();
+    }
 
     //追加
     public int insertStudents(Students students){
+
         return studentsMapper.insertStudents(students);
     }
     //更新
