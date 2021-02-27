@@ -10,26 +10,25 @@
         <result column="depart" jdbcType="VARCHAR" property="depart"/>
     </resultMap>
     <select id="findTeacher" resultMap="BaseReultMap">
-        SELECT * FROM teacher
+        SELECT * FROM teachers;
     </select>
     <insert id="insertTeacher" parameterType="com.koiwaLearning.api.domain.Teacher">
-        INSERT INTO teacher(
+        INSERT INTO teachers(
         tno,tname,tsex,tbirthday,prof,depart
         )VALUES (
-        #{tnp},#{tname},#{tsex},#{tbirthday},#{prof},#{depart}
+        #{tno},#{tname},#{tsex},#{tbirthday},#{prof},#{depart}
         );
     </insert>
     <update id="updateTeacher" parameterType="com.koiwaLearning.api.domain.Teacher">
-        UPDATE teacher
+        UPDATE teachers
         SET TNAME = #{tname},
-            TSEX = #{tsex},
             TBIRTHDAY = #{tbirthday},
             PROF = #{prof},
             DEPART = #{depart}
         WHERE TNO = #{tno};
     </update>
     <delete id="deleteTeacher" parameterType="com.koiwaLearning.api.domain.Teacher">
-        DELETE FROM teacher
+        DELETE FROM teachers
         WHERE TNO = #{tno};
     </delete>
 </mapper>

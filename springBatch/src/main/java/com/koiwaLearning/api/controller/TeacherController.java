@@ -23,7 +23,7 @@ public class TeacherController {
     @RequestMapping(value = {"/insert"},method = RequestMethod.GET)
     public int insertTeacher(){
         Teacher teacher = new Teacher();
-        teacher.setTno("1009");
+        teacher.setTno("109");
         teacher.setTname("王老师");
         teacher.setTsex("男");
         teacher.setTbirthday(Timestamp.valueOf("2009-09-10 12:12:01"));
@@ -34,7 +34,7 @@ public class TeacherController {
     @RequestMapping(value = {"/update"},method = RequestMethod.GET)
     public int updateTeacher(){
         Teacher teacher = new Teacher();
-        teacher.setTno("1009");
+        teacher.setTno("109");
         teacher.setTname("xxxx");
         teacher.setTbirthday(Timestamp.valueOf("2019-09-09 10:11:00"));
         teacher.setProf("一级导师");
@@ -44,7 +44,7 @@ public class TeacherController {
     @RequestMapping(value = {"/delete"},method = RequestMethod.GET)
     public int deleteTeacher(){
        Teacher teacher = new Teacher();
-       teacher.setTno("1009");
+       teacher.setTno("109");
         return teacherService.deleteTeacher(teacher);
     }
 }
