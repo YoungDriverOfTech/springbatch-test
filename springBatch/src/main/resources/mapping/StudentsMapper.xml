@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.koiwaLearning.api.mapper.StudentsMapper">
+
+    <resultMap id="BaseResultMap" type="com.koiwaLearning.api.domain.Students">
+        <result column="sno" jdbcType="VARCHAR" property="sno" />
+        <result column="sname" jdbcType="VARCHAR" property="sname" />
+        <result column="ssex" jdbcType="VARCHAR" property="ssex"/>
+        <result column="sbirthday" jdbcType="VARCHAR" property="sbirthday"/>
+        <result column="sclass" jdbcType="VARCHAR" property="sclass"/>
+    </resultMap>
+
+    <select id="findStudents" resultMap="BaseResultMap">
+        SELECT * FROM  students;
+    </select>
+
+    <insert id="insertStudents" parameterType="com.koiwaLearning.api.domain.Students">
+        INSERT INTO students(
+         sno,sname,ssex,sbirthday,class )
+         VALUES (
+          #{sno},#{sname},#{ssex},#{sbirthday},#{sclass}
+         );
+    </insert>
+    <update id="updateStudents" parameterType="com.koiwaLearning.api.domain.Students">
+        update students
+        SET SNAME = #{sname},
+            CLASS = #{sclass}
+        WHERE sno = #{sno};
+    </update>
+    <delete id="deleteStudents" parameterType = "String">
+        DELETE  FROM students
+        WHERE sno = #{sno};
+    </delete>
+
+</mapper>
