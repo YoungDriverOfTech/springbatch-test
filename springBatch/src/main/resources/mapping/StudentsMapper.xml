@@ -11,7 +11,18 @@
     </resultMap>
 
     <select id="findStudents" resultMap="BaseResultMap">
-        SELECT * FROM  students;
+        <!--SELECT * FROM  students;-->
+        SELECT
+        students.sno AS id,
+        students.sname AS NAME,
+        students.ssex AS sex,
+        students.class,
+        scores.cno AS aa,
+        scores.degree AS degree
+        FROM
+        students
+        INNER JOIN scores ON students.sno = scores.sno
+        INNER JOIN courses ON scores.cno = courses.cno
     </select>
 
     <insert id="insertStudents" parameterType="com.koiwaLearning.api.domain.Students">
