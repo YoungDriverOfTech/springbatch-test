@@ -4,6 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>学生信息</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div th:replace="~{fragments/header::header}"></div>
@@ -31,15 +39,15 @@
         <td th:text="${student.sex}"></td>
         <td th:text="${student.courseName}"></td>
         <td th:text="${student.score}"></td>
-
-<!--        <td >-->
-<!--            <a th:href="@{'users/delete/'+${user.id}}">删除</a>-->
-<!--            <a th:href="@{'users/modify/'+${user.id}}">修改</a>-->
-<!--        </td>-->
     </tr>
+
+    <button class="btn-primary">按钮</button>
     </tbody>
 </table>
 
 <div th:replace="~{fragments/footer::footer}"></div>
 </body>
+<script>
+
+</script>
 </html>
