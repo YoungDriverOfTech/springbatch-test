@@ -1,5 +1,6 @@
 package com.koiwaLearning.api.service;
 
+import com.koiwaLearning.api.domain.StudentDetail;
 import com.koiwaLearning.api.domain.StudentsInfo;
 import com.koiwaLearning.api.mapper.StudentsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,11 @@ public class StudentsService {
 
     public List<StudentsInfo> getStudentsInfo() {
         return studentsMapper.getStudentsInfo();
+    }
+
+    // 根据id查询一个学生
+    public StudentDetail getStudent(String studentId) {
+        return studentsMapper.getStudent(studentId);
     }
 
     // 追加

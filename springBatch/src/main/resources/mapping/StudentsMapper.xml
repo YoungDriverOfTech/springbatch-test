@@ -10,6 +10,15 @@
         <result column="score" jdbcType="VARCHAR" property="score" />
     </resultMap>
 
+    <resultMap id="StudentDetail" type="com.koiwaLearning.api.domain.StudentDetail">
+        <result column="sno" jdbcType="VARCHAR" property="id" />
+        <result column="sname" jdbcType="VARCHAR" property="name" />
+        <result column="ssex" jdbcType="VARCHAR" property="sex" />
+        <result column="sbirthday" jdbcType="VARCHAR" property="birthday" />
+        <result column="class" jdbcType="VARCHAR" property="className" />
+    </resultMap>
+
+
     <select id="getStudentsInfo" resultMap="BaseResultMap">
         select students.sno as id , students.sname as name , students.ssex as sex , courses.cname as course_name , scores.degree as score
         from students
@@ -18,6 +27,11 @@
         inner join courses
             on students.sno = scores.sno
             and scores.cno = courses.cno
+    </select>
+
+    <select id="getStudent" resultMap="StudentDetail" parameterType="string">
+        select * from students
+        where sno = #{studentId}
     </select>
 
     <insert id="insertStudents" parameterType="com.koiwaLearning.api.domain.StudentsInfo">
