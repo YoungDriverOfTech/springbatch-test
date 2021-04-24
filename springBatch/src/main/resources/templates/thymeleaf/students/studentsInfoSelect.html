@@ -14,6 +14,20 @@
             xmlhttp.open("GET",url,true);   //设置访问的页面
             xmlhttp.send(null);  //执行访问
         }
+        function deletStuId(){
+            let studentId = document.getElementById('stuId').value;  //sutId是input的id
+            let url ='/students/deletStudent?deleStuId='+studentId;
+            xmlhttp =new XMLHttpRequest();
+            xmlhttp.onreadystatechange=deletResult; //响应函数
+            xmlhttp.open("GET",url,true);   //设置访问的页面
+            xmlhttp.send(null);  //执行访问
+        }
+          function deletResult() {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+                let result = xmlhttp.responseText;
+                alert(result) //delet回调函数
+            }
+        }
         function checkResult() {
             if (xmlhttp.readyState==4 && xmlhttp.status==200) {
                 let result = xmlhttp.responseText;
@@ -24,7 +38,31 @@
                 }
             }
         }
+        //插入四个变量
+        function insertStu(){
+            console.log("111");
+            let stuName=document.getElementById('xname').value;
+            let stuSex=document.getElementById('xsex').value;
+            let stuBirthday=document.getElementById('xbirthday').value;
+            let stuClass=document.getElementById('xclass').value;
+            let url="/students/insertStudent?xname=" + stuName + "&xsex=" + stuSex + "&xbirthday=" + stuBirthday + "&xclass=" + stuClass;
+            console.log("222");
+
+            xmlhttp =new XMLHttpRequest();
+            xmlhttp.onreadystatechange = insertResult; //响应函
+            xmlhttp.open("GET",url,true);   //设置访问的页面
+            xmlhttp.send(null);  //执行访问
+
+            console.log("333");
+        }
+          function insertResult() {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+                let result = xmlhttp.responseText;
+                alert(result) //delet回调函数
+            }
+        }
     </script>
+
 </head>
 <body>
 <div th:replace="~{fragments/header::header}"></div>
@@ -34,6 +72,7 @@
 <!--</div>-->
 学生id：<input type="text" id="stuId">
 <button onclick="selectStuId()">查询</button>
+<button onclick="deletStuId()">删除</button>
 <table border="1">
     <thead>
     <tr>
@@ -62,6 +101,11 @@
     </tr>
     </tbody>
 </table>
+学生姓名：<input type="text" id="xname">
+性别：<input type="text" id="xsex">
+出生日期：<input type="text" id="xbirthday">
+班级：<input type="text" id="xclass">
+<button onclick="insertStu()">新规学生</button>
 
 <div th:replace="~{fragments/footer::footer}"></div>
 </body>

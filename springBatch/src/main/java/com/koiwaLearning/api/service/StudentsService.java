@@ -24,11 +24,19 @@ public class StudentsService {
         return studentsMapper.getStudentById(stuId);
 
     }
+    public List<Students> findAll(){
+        return studentsMapper.findAll();
+    }
 
     // 追加
     public int insertStudents(StudentsInfo students) {
         return studentsMapper.insertStudents(students);
     }
+
+    public int insertStudent(Students student){
+        return studentsMapper.insertStudent(student);
+    }
+
 
     // 更新
     public int updateStudents(StudentsInfo students) {

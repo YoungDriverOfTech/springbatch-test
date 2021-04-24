@@ -26,16 +26,27 @@
             on students.sno = scores.sno
             and scores.cno = courses.cno
     </select>
+
     <select id="getStudentById" resultMap="BaseId">
         select * from students where sno = #{sutId}
     </select>
+
+    <select id="findAll" resultMap="BaseId">
+        select * from students
+    </select>
+
     <insert id="insertStudents" parameterType="com.koiwaLearning.api.domain.StudentsInfo">
         INSERT INTO students (
         sno,sname,ssex,sbirthday,sclass)
         VALUES (
         #{sno},#{sname},#{ssex},#{sbirthday},#{sclass});
     </insert>
-
+    <insert id="insertStudent" parameterType="com.koiwaLearning.api.domain.Students">
+        INSERT INTO students (
+        sno,sname,ssex,sbirthday,class)
+        VALUES (
+        #{sno},#{sname},#{ssex},#{sbirthday},#{sclass});
+    </insert>
     <update id="updateStudents" parameterType="com.koiwaLearning.api.domain.StudentsInfo">
         UPDATE students
         SET SNAME = #{sname},

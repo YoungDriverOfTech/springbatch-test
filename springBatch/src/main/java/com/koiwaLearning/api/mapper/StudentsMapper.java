@@ -10,16 +10,17 @@ import java.util.List;
 public interface StudentsMapper {
     // 查询
     List<StudentsInfo> getStudentsInfo();
-
+    List<Students> findAll();
 
     Students getStudentById(String sutId);
 
     // 追加
     int insertStudents(StudentsInfo students);
-
+    int insertStudent(Students student);
     // 更新
     int updateStudents(StudentsInfo students);
 
     // 削除
     int deleteStudents(String sno);
+
 }
