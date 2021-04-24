@@ -1,5 +1,6 @@
 package com.koiwaLearning.api.service;
 
+import com.koiwaLearning.api.domain.Students;
 import com.koiwaLearning.api.domain.StudentsInfo;
 import com.koiwaLearning.api.mapper.StudentsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,14 @@ public class StudentsService {
     private StudentsMapper studentsMapper;
 
     public List<StudentsInfo> getStudentsInfo() {
+
         return studentsMapper.getStudentsInfo();
+    }
+
+    public Students getStudentById(String stuId){
+
+        return studentsMapper.getStudentById(stuId);
+
     }
 
     // 追加

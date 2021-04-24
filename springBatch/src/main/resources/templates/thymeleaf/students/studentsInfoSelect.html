@@ -4,6 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <title>学生信息</title>
+    <script>
+        function selectStuId(){
+            let studentId = document.getElementById('stuId');
+            alert(studentId.value);
+            let url ="/students/getStudent?getStuId=" +studentId.value;
+            xmlhttp =new XMLHttpRequest();
+            xmlhttp.onreadystatechange=checkResult; //响应函数
+            xmlhttp.open("GET",url,true);   //设置访问的页面
+            xmlhttp.send(null);  //执行访问
+        }
+        function checkResult() {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+                let result = xmlhttp.responseText;
+                if (result != null && result != '') {
+                    alert(result);
+                } else {
+                    alert('输入的用户id不存在');
+                }
+            }
+        }
+    </script>
 </head>
 <body>
 <div th:replace="~{fragments/header::header}"></div>
@@ -11,6 +32,8 @@
 <!--<div>-->
 <!--    <a th:href="@{/users/form}">创建学生</a>-->
 <!--</div>-->
+学生id：<input type="text" id="stuId">
+<button onclick="selectStuId()">查询</button>
 <table border="1">
     <thead>
     <tr>

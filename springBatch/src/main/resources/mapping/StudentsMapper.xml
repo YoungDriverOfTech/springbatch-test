@@ -9,6 +9,13 @@
         <result column="course_name" jdbcType="VARCHAR" property="courseName" />
         <result column="score" jdbcType="VARCHAR" property="score" />
     </resultMap>
+    <resultMap id="BaseId" type="com.koiwaLearning.api.domain.Students">
+        <result column="sno" jdbcType="VARCHAR" property="sno" />
+        <result column="sname" jdbcType="VARCHAR" property="sname" />
+        <result column="ssex" jdbcType="VARCHAR" property="ssex" />
+        <result column="sbirthday" jdbcType="VARCHAR" property="sbirthday" />
+        <result column="sclass" jdbcType="VARCHAR" property="sclass" />
+    </resultMap>
 
     <select id="getStudentsInfo" resultMap="BaseResultMap">
         select students.sno as id , students.sname as name , students.ssex as sex , courses.cname as course_name , scores.degree as score
@@ -19,7 +26,9 @@
             on students.sno = scores.sno
             and scores.cno = courses.cno
     </select>
-
+    <select id="getStudentById" resultMap="BaseId">
+        select * from students where sno = #{sutId}
+    </select>
     <insert id="insertStudents" parameterType="com.koiwaLearning.api.domain.StudentsInfo">
         INSERT INTO students (
         sno,sname,ssex,sbirthday,sclass)

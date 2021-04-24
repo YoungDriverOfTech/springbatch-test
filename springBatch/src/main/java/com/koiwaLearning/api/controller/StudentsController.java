@@ -1,11 +1,13 @@
 package com.koiwaLearning.api.controller;
 
+import com.koiwaLearning.api.domain.Students;
 import com.koiwaLearning.api.domain.StudentsInfo;
 import com.koiwaLearning.api.service.StudentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,7 +27,12 @@ public class StudentsController {
         model.addAttribute("title", "学生信息");
         return new ModelAndView("students/studentsInfoSelect","studentModel",model);
     }
+    @RequestMapping(value="/getStudent",method = RequestMethod.GET)
+    public Students getStudentById(@RequestParam("getStuId") String getStuId){
+        Students getStudentById = studentsService.getStudentById(getStuId);
+        return getStudentById;
 
+    }
     /**
      * 获取创建表单页面
      */
