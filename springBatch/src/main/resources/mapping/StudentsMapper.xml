@@ -9,6 +9,7 @@
         <result column="course_name" jdbcType="VARCHAR" property="courseName" />
         <result column="score" jdbcType="VARCHAR" property="score" />
     </resultMap>
+
     <resultMap id="BaseId" type="com.koiwaLearning.api.domain.Students">
         <result column="sno" jdbcType="VARCHAR" property="sno" />
         <result column="sname" jdbcType="VARCHAR" property="sname" />
@@ -51,6 +52,12 @@
         UPDATE students
         SET SNAME = #{sname},
         SCLASS = #{sclass}
+        WHERE   sno = #{sno};
+    </update>
+    <update id="updateStudent" parameterType="com.koiwaLearning.api.domain.Students">
+        UPDATE students
+        SET SNAME = #{sname},
+            SCLASS = #{sclass}
         WHERE   sno = #{sno};
     </update>
 

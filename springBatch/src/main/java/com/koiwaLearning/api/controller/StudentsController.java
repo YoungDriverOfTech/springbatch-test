@@ -58,6 +58,26 @@ public class StudentsController {
         return new ModelAndView("students/studentsInfoInsert","studentModel",model);
     }
 
+    //学生修改
+//    @RequestMapping(value = "updateStudent",method = RequestMethod.GET)
+//    public String updateStudent(@RequestParam("updateStuId")String updateStuId,@RequestParam("stuName") String stuName,@RequestParam("stuSex") String stuSex,
+//                                @RequestParam("stuBirthday") String stuBirthday,@RequestParam("stuClass") String stuClass){
+//        Students getStudentById = studentsService.updateStudent(updateStuId);
+//        if(getStudentById == null){
+//            return "id不存在";
+//        }
+//        if (stuName.length() > 4) {
+//            return "名字长度超过了限制，重新输入";
+//        }
+//        if(stuClass.length() > 5){
+//            return "班级名字超过限制";
+//        }
+//        if(stuSex.length() > 2){
+//            return "性别输入不正确";
+//        }
+//
+//    }
+
     /**
      * 新增学生
      */
@@ -97,5 +117,10 @@ public class StudentsController {
         return "插入成功";
 
     }
+    //修改学生信息
+//    @RequestMapping(value = "/insertStudent",method = RequestMethod.GET)
+//    public String updateStudentInfo(){
+//
+//    }
 
 }

@@ -42,6 +42,10 @@ public class StudentsService {
     public int updateStudents(StudentsInfo students) {
         return studentsMapper.updateStudents(students);
     }
+    public int updateStudent(Students student){
+        return studentsMapper.updateStudent(student);
+    }
+
     // 削除
     public int deleteStudents(String sno) {
         return studentsMapper.deleteStudents(sno);

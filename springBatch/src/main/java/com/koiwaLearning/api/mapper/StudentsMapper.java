@@ -19,6 +19,7 @@ public interface StudentsMapper {
     int insertStudent(Students student);
     // 更新
     int updateStudents(StudentsInfo students);
+    int updateStudent(Students student);
 
     // 削除
     int deleteStudents(String sno);

@@ -14,6 +14,17 @@
             xmlhttp.open("GET",url,true);   //设置访问的页面
             xmlhttp.send(null);  //执行访问
         }
+        // function selectAllStuId(){
+        //     //var user_id = document.getElementById('user_id').value
+        //     let studentId = document.getElementById('stuId');
+        //     alert(studentId.value);
+        //     let url ="/students/getAllStudent?getAllStuId=" +studentId.value;
+        //     xmlhttp =new XMLHttpRequest();
+        //     xmlhttp.onreadystatechange=checkResult; //响应函数
+        //     xmlhttp.open("GET",url,true);   //设置访问的页面
+        //     xmlhttp.send(null);  //执行访问
+        // }
+        //删除
         function deletStuId(){
             let studentId = document.getElementById('stuId').value;  //sutId是input的id
             let url ='/students/deletStudent?deleStuId='+studentId;
@@ -28,6 +39,7 @@
                 alert(result) //delet回调函数
             }
         }
+
         function checkResult() {
             if (xmlhttp.readyState==4 && xmlhttp.status==200) {
                 let result = xmlhttp.responseText;
@@ -37,6 +49,25 @@
                     alert('输入的用户id不存在');
                 }
             }
+        }
+        //修改信息
+        function updateStu(){
+            let studentId = document.getElementById('stuId').value;
+            // alert(studentId);
+            // let url ="/students/updateStudent";
+            let stuName=document.getElementById('stuName').value;
+            let stuSex=document.getElementById('stuSexex').value;
+            let stuBirthday=document.getElementById('stuBirthday').value;
+            let stuClass=document.getElementById('stuClass').value;
+            let url="/students/updateStudent?stuName=" + stuName + "&stuSexex=" + stuSex + "&xbirthday=" + stuBirthday +
+                "&stuClass=" + stuClass;
+            console.log("222");
+
+            xmlhttp =new XMLHttpRequest();
+            xmlhttp.onreadystatechange = insertResult; //响应函
+            xmlhttp.open("GET",url,true);   //设置访问的页面
+            xmlhttp.send(null);  //执行访问
+            console.log("333");
         }
         //插入四个变量
         function insertStu(){
@@ -52,7 +83,6 @@
             xmlhttp.onreadystatechange = insertResult; //响应函
             xmlhttp.open("GET",url,true);   //设置访问的页面
             xmlhttp.send(null);  //执行访问
-
             console.log("333");
         }
           function insertResult() {
@@ -61,7 +91,11 @@
                 alert(result) //delet回调函数
             }
         }
+
     </script>
+    <style>
+
+    </style>
 
 </head>
 <body>
@@ -73,6 +107,7 @@
 学生id：<input type="text" id="stuId">
 <button onclick="selectStuId()">查询</button>
 <button onclick="deletStuId()">删除</button>
+<button onclick="checkStuId()">输入查询的ID</button>
 <table border="1">
     <thead>
     <tr>
@@ -106,7 +141,29 @@
 出生日期：<input type="text" id="xbirthday">
 班级：<input type="text" id="xclass">
 <button onclick="insertStu()">新规学生</button>
+<br><br>
+<table border="1">
+    <tr style="border: aliceblue solid 1px">
+        <td border="1" solid 120px>学生ID：</td>
+        <td><input type="text"id="stuId"></td>
+        <td colspan="2" style="text-align:right"><input style="width: 150px" type="button" onclick="selectAllStuId()" value="查询按钮" id="btnId"></td>
+    </tr>
+    <tr>
+        <td >学生姓名：</td>
+        <td><input type="text"id="stuName"></td>
+        <td>性别：</td>
+        <td><input type="text"id="stuSex"></td>
 
+    </tr>
+    <tr >
+        <td>出生日期：</td>
+        <td><input type="text"id="stuBirthday"></td>
+        <td>班级:</td>
+        <td ><input type="text"id="stuClass"style="width: auto" ></td>
+    </tr>
+</table>
+<button onclick="updateStu()" style="float:left">信息修改</button>
 <div th:replace="~{fragments/footer::footer}"></div>
 </body>
 </html>
+
