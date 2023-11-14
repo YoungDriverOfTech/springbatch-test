@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>学生信息</title>
+<script>
+
+    function searchStudent() {
+        let studentId = document.getElementById('stuId').value;
+        console.log(studentId);
+
+        let url = "/students/getStudent?studentId="+studentId;
+
+        xmlhttp =new XMLHttpRequest();
+        xmlhttp.onreadystatechange=checkResult; //响应函数
+        xmlhttp.open("GET",url,true);   //设置访问的页面
+        xmlhttp.send(null);  //执行访问
+    }
+
+    function checkResult() {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+            let result = xmlhttp.responseText;
+            if (result != null && result != '') {
+                alert(result);
+            } else {
+                alert('输入的用户id不存在');
+            }
+        }
+    }
+</script>
+</head>
+<body>
+<div th:replace="~{fragments/header::header}"></div>
+<h3 th:text="${studentModel.title}"></h3>
+<table border="1">
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>姓名</td>
+        <td>性别</td>
+        <td>课程</td>
+        <td>成绩</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${studentModel.studentList.size()} eq 0">
+        <td colspan="5">没有学生信息！</td>
+    </tr>
+    <tr th:each="student:${studentModel.studentList}">
+        <td th:text="${student.id}"></td>
+        <td th:text="${student.name}"></td>
+        <td th:text="${student.sex}"></td>
+        <td th:text="${student.courseName}"></td>
+        <td th:text="${student.score}"></td>
+    </tr>
+
+    学生id:<input type="text" id="stuId" name="studentId">
+    <button onclick="searchStudent()">查找学生</button>
+    </tbody>
+</table>
+
+<div th:replace="~{fragments/footer::footer}"></div>
+</body>
+</html>

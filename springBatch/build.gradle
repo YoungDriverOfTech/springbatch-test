@@ -30,6 +30,9 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-batch')
 	testCompile('org.springframework.batch:spring-batch-test')
 
+	//Thymeleaf模板
+	compile("org.springframework.boot:spring-boot-starter-thymeleaf:2.4.2")
+	compile("net.sourceforge.nekohtml:nekohtml:1.9.22")
 }
 
 test {
